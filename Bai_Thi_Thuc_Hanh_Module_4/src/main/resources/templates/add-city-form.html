@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Form</title>
+</head>
+<body>
+    <h1>Thêm Thành Phố</h1>
+    <form th:action="@{/add-city}" th:object="${city}" method="post">
+
+        <label th:text="Tên"></label>
+        <input type="text" th:field="*{name}"/><br/>
+
+        <label>Quốc Gia</label>
+        <select th:field="${city.name_country}">
+            <option th:each="c : ${countryList}" th:value="${c.name}" th:text="${c.name}">
+            </option>
+        </select><br/>
+
+        <label>Diện Tích</label>
+        <input type="text" th:field="*{area}"/><br/>
+
+        <label>Dân Số</label>
+        <input type="text" th:field="*{population}"/><br/>
+
+        <label>GDP</label>
+        <input type="text" th:field="*{gdp}"/><br/>
+
+        <label>Giới Thiệu</label>
+        <textarea rows="5" cols="25" th:field="*{introduce}"></textarea><br/>
+
+        <input type="submit" value="Nhập Thành Phố"/>
+        <button>Thoát</button>
+    </form>
+</body>
+</html>

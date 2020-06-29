@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City List</title>
+</head>
+<body>
+<h1>Danh Sách Thành Phố</h1>
+<form th:action="/search" method="post">
+<label>Nhập Tên Thành Phố Để Tìm Kiếm</label>
+    <input type="text" value="name_city" name="name_city"/>
+    <input type="submit" value="Tìm Kiếm"/>
+</form>
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Tên Thành </th>
+        <th>Quốc Gia</th>
+        <th>Diện Tích (Km2)</th>
+        <th>Dân Số (Triệu Dân)</th>
+        <th>GDP</th>
+        <th>Giới Thiệu</th>
+    </tr>
+    <tr th:each="city, stat : ${cityList}">
+        <td>
+            <span th:text="${stat.count}"></span>
+        </td>
+        <td>
+            <span th:text="${city.name}"></span>
+        </td>
+        <td>
+            <span th:text="${city.name_country}"></span>
+        </td>
+        <td>
+            <span th:text="${city.area}"></span>
+        </td>
+        <td>
+            <span th:text="${city.population}"></span>
+        </td>
+        <td>
+            <span th:text="${city.gdp}"></span>
+        </td>
+        <td>
+            <span th:text="${city.introduce}"></span>
+        </td>
+        <td><a th:href="@{/edit-city/__${city.id}__}">Edit</a></td>
+        <td><a th:href="@{/delete-city/__${city.id}__}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
